@@ -5,15 +5,21 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatFormFieldModule } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+
 import { RoadmapViewComponent } from './roadmap-view/roadmap-view.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'roadmap-view', component: RoadmapViewComponent},
+  { path: 'add-task', component: AddTaskComponent}
+  
 ];
 
 @NgModule({
@@ -21,7 +27,8 @@ const appRoutes: Routes = [
     AppComponent,
     NavigationComponent,
     DashboardComponent,
-    RoadmapViewComponent
+    RoadmapViewComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,9 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-  
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
