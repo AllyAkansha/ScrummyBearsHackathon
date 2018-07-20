@@ -9,18 +9,19 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { RoadmapViewComponent } from './roadmap-view/roadmap-view.component';
 
 const appRoutes: Routes = [
-  { path: 'first-page', component: FirstPageComponent},
-  { path: 'second-page', component: SecondPageComponent},
-  { path: 'third-page', component: ThirdPageComponent}
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'roadmap-view', component: RoadmapViewComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    DashboardComponent
+    DashboardComponent,
+    RoadmapViewComponent
   ],
   imports: [
     BrowserModule,
