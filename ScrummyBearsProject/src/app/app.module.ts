@@ -25,11 +25,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { RoadmapViewComponent } from './roadmap-view/roadmap-view.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { AddLaneComponent } from './add-lane/add-lane.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'roadmap-view', component: RoadmapViewComponent},
   { path: 'add-task', component: AddTaskComponent}
+  // { path: 'add-task', component: AddLaneComponent}
   
 ];
 
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     NavigationComponent,
     DashboardComponent,
     RoadmapViewComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    AddLaneComponent
   ],
   imports: [
     BrowserModule,
