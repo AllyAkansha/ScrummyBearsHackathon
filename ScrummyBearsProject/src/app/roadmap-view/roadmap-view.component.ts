@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { D3Service } from './d3.service';
 
 @Component({
   selector: 'app-roadmap-view',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoadmapViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private d3Service: D3Service) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  ngAfterContentInit() {
+    this.d3Service.init();
+    this.d3Service.testRectangles();
   }
-
 }
