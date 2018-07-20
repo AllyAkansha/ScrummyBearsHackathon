@@ -31,7 +31,6 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'roadmap-view', component: RoadmapViewComponent},
   { path: 'add-task', component: AddTaskComponent}
-  // { path: 'add-task', component: AddLaneComponent}
   
 ];
 

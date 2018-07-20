@@ -14,7 +14,15 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     width: 100%;
   }
   
-
+.purple{
+  color: #650360;
+}
+.reversepurple{
+  background-color: #650360;
+  color: white;
+  border-color: white;
+  border-width: 10px;
+}
   .mat-button{
     background-color: #650360;
     color: white;
