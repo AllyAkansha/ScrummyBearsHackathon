@@ -1,18 +1,25 @@
-<mat-card class ="task-input-form-card flex-container">Add Task to Gantt Chart
+<mat-card class="task-input-form-card flex-container">Add Task to Gantt Chart
 
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Task Name">
-  </mat-form-field>
-  <!-- <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a start date">
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput [(ngModel)]="taskName"  placeholder="Task Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="startDate"  [matDatepicker]="picker" placeholder="Choose a start date (mm/dd/yyyy)">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose an end date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field> -->
-</div>
+      <input matInput [(ngModel)]="endDate" [matDatepicker]="picker2" placeholder="Choose an end date (mm/dd/yyyy)">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+
+  </div>
+  <div>
+    <button mat-button (click)="onClickMe()">Add Task!</button>
+    <br>
+    <br> {{taskAdded}}
+  </div>
 </mat-card>
