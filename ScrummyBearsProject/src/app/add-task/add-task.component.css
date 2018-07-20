@@ -1,9 +1,6 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
-  
+
+.task-input-form-card{
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
