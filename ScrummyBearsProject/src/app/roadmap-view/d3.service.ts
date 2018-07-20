@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import * as d3 from 'd3';
 
-import { Task } from './task';
+import { Task } from '../model/task';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +41,8 @@ export class D3Service {
   init(): void {
     this.roadmap = d3.select('#roadmap')
       .append('svg')
-      .style('width', 1000)
-      .style('height', 1000)
+      .attr('width', 1000)
+      .attr('height', 1000)
   }
 
   findEarliestDate(dates: Task[]): moment.Moment {
@@ -84,9 +84,9 @@ export class D3Service {
         return moment.duration(d.end.diff(d.start)).asDays();
       })
       .attr('y', (d: any, i) => {
-        return 105 * d.lane;
+        return 52 * d.lane;
       })
-      .attr('height', 100)
+      .attr('height', 50)
   }
 
   testRectangles(): void {
