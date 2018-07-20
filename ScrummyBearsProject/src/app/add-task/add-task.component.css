@@ -1,6 +1,10 @@
+.task-input-form-card {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-.task-input-form-card{
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+.mat-button {
+  position: absolute;
+  right: 0;
 }
