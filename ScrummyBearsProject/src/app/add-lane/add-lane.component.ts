@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Lane } from '../model/lane';
+import { ChartStoreService } from '../service/chart-store.service';
 
 @Component({
   selector: 'app-add-lane',
@@ -6,24 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-lane.component.css']
 })
 export class AddLaneComponent implements OnInit {
-  laneID;
+  laneId: number;
   laneName: string;
   newLaneName: string;
   
-  lanes = [
-    { laneID: 0, laneName: "Late 1" },
-    { laneID: 1, laneName: "LAne 2" },
-    { laneID: 2, laneName: "Lans 3" }
+  lanes: Lane[] = [
+    { id: 0, name: "Lane 1" },
+    { id: 1, name: "Lane 2" },
+    { id: 2, name: "Lane 3" }
   ];
   
 
-  constructor() { }
+  constructor(private chartStoreService: ChartStoreService) { }
 
   ngOnInit() {
   }
   
   addLane() {
-    this.lanes.push({ laneID: this.lanes.length, laneName: this.newLaneName });
+    const newLane = { id: this.lanes.length, name: this.newLaneName };
+    this.lanes.push(newLane);
+
+    this.chartStoreService.addLane(newLane);
+
     this.newLaneName = "";
   }
 }

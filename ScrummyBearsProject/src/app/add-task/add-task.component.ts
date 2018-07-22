@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ChartStoreService } from '../service/chart-store.service';
+import * as moment from 'moment';
 
 @Component({
   selector: "app-add-task",
@@ -19,25 +21,25 @@ export class AddTaskComponent implements OnInit {
   laneName;
   
   lanes = [
-    { laneID: 0, laneName: "Late 0" },
-    { laneID: 1, laneName: "LAne 1" },
-    { laneID: 2, laneName: "Lans 2" }
+    { laneID: 0, laneName: "Lane 0" },
+    { laneID: 1, laneName: "Lane 1" },
+    { laneID: 2, laneName: "Lane 2" }
   ];
 
 
-  constructor() {}
+  constructor(private chartStoreService: ChartStoreService) {}
 
   ngOnInit() {}
 
-
-
   onClickMe() {
-    this.outputTask = { 
+    this.outputTask = {
         name: this.taskName, 
-        startDate: new Date(this.startDate.toString()).toISOString(), 
-        endDate: new Date(this.endDate.toString()).toISOString(),
+        start: moment(new Date(this.startDate.toString()).toISOString()), 
+        end: moment(new Date(this.endDate.toString()).toISOString()),
         lane: this.selectedLane
     }
+
+    this.chartStoreService.addTask(this.outputTask);
     
     this.taskAdded = "Roadmap Updated!";
 
