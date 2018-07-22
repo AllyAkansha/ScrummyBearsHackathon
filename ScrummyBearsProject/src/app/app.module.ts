@@ -19,20 +19,12 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
   MatOptionModule,      
   MatSlideToggleModule,} from '@angular/material';
   
+import { RoutingModule } from './routing/routing.module';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
-
-import { RouterModule, Routes } from '@angular/router';
-
 import { RoadmapViewComponent } from './roadmap-view/roadmap-view.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { AddLaneComponent } from './add-lane/add-lane.component';
-
-const appRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'roadmap-view', component: RoadmapViewComponent},
-  { path: 'add-task', component: AddTaskComponent}
-  
-];
 
 @NgModule({
   declarations: [
@@ -46,7 +38,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
+    RoutingModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,

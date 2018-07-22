@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import * as d3 from 'd3';
 
 import { Task } from '../model/task';
+import { ChartStoreService } from '../service/chart-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,33 +13,13 @@ export class D3Service {
   test: Task[];
   roadmap: any;
 
-  constructor() {
-    this.test = [
-      {
-        'id': 0,
-        'name': 'default',
-        'start': moment('2018-07-01'),
-        'end': moment('2018-07-20'),
-        'lane': 0
-      },
-      {
-        'id': 0,
-        'name': 'default',
-        'start': moment('2018-07-05'),
-        'end': moment('2018-07-20'),
-        'lane': 1
-      },
-      {
-        'id': 0,
-        'name': 'default',
-        'start': moment('2018-07-21'),
-        'end': moment('2018-08-30'),
-        'lane': 1
-      },
-    ];
+  constructor(private chartStoreService: ChartStoreService) {
+    this.chartStoreService.taskSubject.subscribe(
+      (task) => this.redraw()
+    );
   }
 
-  init(): void {
+  public init(): void {
     this.roadmap = d3.select('#roadmap')
       .append('svg')
       .attr('width', 1000)
@@ -69,7 +50,7 @@ export class D3Service {
     return latest;
   }
 
-  drawTasks(data): void {
+  public drawTasks(data): void {
     const earliest = this.findEarliestDate(data);
 
     this.roadmap
@@ -89,7 +70,26 @@ export class D3Service {
       .attr('height', 50)
   }
 
+  redraw(): void {
+    d3.select('svg').remove();
+    this.init();
+    this.drawTasks(this.chartStoreService.chart.tasks);
+  }
+
   testRectangles(): void {
-    this.drawTasks(this.test);
+    this.drawTasks(this.chartStoreService.chart.tasks);
+  }
+
+  tasksFromCSV(csv): void {
+    const tasks = d3.csvParse(csv)
+      .map((task: any) => {
+        task.start = moment(task.start);
+        task.end = moment(task.end);
+
+        return task;
+      });
+
+    this.chartStoreService.chart.tasks = tasks as Task[];
+    this.redraw();
   }
 }
