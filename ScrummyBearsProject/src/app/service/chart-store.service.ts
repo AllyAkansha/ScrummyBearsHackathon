@@ -30,9 +30,10 @@ export class ChartStoreService { // are you ready
     this.chart = {
       metadata: {},
       lanes: [
-        { id: 0, name: "Lane 1" },
-        { id: 1, name: "Lane 2" },
-        { id: 2, name: "Lane 3" }
+        { id: 0, name: "DFS" },
+        { id: 1, name: "DevOps" },
+        { id: 2, name: "Advantage" },
+        { id: 3, name: "E & O" }
       ],
       stages: [],
       events: [
@@ -78,6 +79,48 @@ export class ChartStoreService { // are you ready
           'start': moment('2018-07-21'),
           'end': moment('2018-08-30'),
           'lane': 1
+        },
+        {
+          'id': 0,
+          'name': 'default',
+          'start': moment('2018-05-21'),
+          'end': moment('2018-09-30'),
+          'lane': 2
+        },
+        {
+          'id': 0,
+          'name': 'default',
+          'start': moment('2018-10-02'),
+          'end': moment('2018-12-30'),
+          'lane': 2
+        },
+        {
+          'id': 0,
+          'name': 'default',
+          'start': moment('2018-02-02'),
+          'end': moment('2018-03-30'),
+          'lane': 3
+        },
+        {
+          'id': 0,
+          'name': 'default',
+          'start': moment('2018-05-02'),
+          'end': moment('2018-07-30'),
+          'lane': 3
+        },
+        {
+          'id': 0,
+          'name': 'default',
+          'start': moment('2018-08-02'),
+          'end': moment('2018-09-30'),
+          'lane': 3
+        },
+        {
+          'id': 0,
+          'name': 'default',
+          'start': moment('2018-11-02'),
+          'end': moment('2018-11-30'),
+          'lane': 3
         }
       ]
     }

@@ -20,13 +20,6 @@ export class AddTaskComponent implements OnInit {
   laneID;
   laneName;
   
-  lanes = [
-    { laneID: 0, laneName: "Lane 0" },
-    { laneID: 1, laneName: "Lane 1" },
-    { laneID: 2, laneName: "Lane 2" }
-  ];
-
-
   constructor(private chartStoreService: ChartStoreService) {}
 
   ngOnInit() {}

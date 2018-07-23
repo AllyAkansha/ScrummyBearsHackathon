@@ -13,7 +13,7 @@ import { ChartStoreService } from '../service/chart-store.service';
 export class D3Service {
 
   SVG_WIDTH = 1000;
-  margin = { top: 20, left: 60, right: 20, bottom: 0 };
+  margin = { top: 20, left: 80, right: 20, bottom: 0 };
 
   test: Task[];
   roadmap: any;
@@ -93,7 +93,6 @@ export class D3Service {
 
     const laneIds = this.chartStoreService.chart.lanes
       .map((value: Lane) => value.id);
-      console.log(laneIds);
 
     const xScaleInt = d3.scaleLinear().domain([0, length]).range([0, 100]);
     const xScale = d3.scaleTime()
@@ -120,7 +119,7 @@ export class D3Service {
 
     this.roadmap
       .append('g')
-      .attr('transform', `translate(50, 50)`)
+      .attr('transform', `translate(${this.margin.left - 10}, 50)`)
       .call(yAxis);
     // const xAxis = d3.axisTop(x)
     // .tickFormat(d3.time.format(tickFormat))
