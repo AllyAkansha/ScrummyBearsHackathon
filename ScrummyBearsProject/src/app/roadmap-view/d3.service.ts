@@ -153,7 +153,7 @@ export class D3Service {
           '#B9C6CA'
         ];
 
-        return colors[parseInt(Math.random() * 10) % colors.length];
+        return colors[Math.floor(Math.random() * 10) % colors.length];
       })
   }
 
