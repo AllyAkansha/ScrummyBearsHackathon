@@ -18,15 +18,22 @@ export class ChartStoreService { // are you ready
   public taskSubject: Subject<any>;
   public laneSubject: Subject<any>;
   public eventsHash: object;
+  public lanesHash: object;
 
   constructor() {
     this.eventsHash = {};
+    this.lanesHash = {};
+
     this.taskSubject = new Subject();
     this.laneSubject = new Subject();
 
     this.chart = {
       metadata: {},
-      lanes: [],
+      lanes: [
+        { id: 0, name: "Lane 1" },
+        { id: 1, name: "Lane 2" },
+        { id: 2, name: "Lane 3" }
+      ],
       stages: [],
       events: [
         {
@@ -77,7 +84,11 @@ export class ChartStoreService { // are you ready
 
     this.chart.events.forEach((event: Event) => {
       this.eventsHash[event.time.toISOString()] = event;
-    })
+    });
+
+    this.chart.lanes.forEach((lane: Lane) => {
+      this.lanesHash[lane.id] = lane;
+    });
   }
 
   getChart(): Chart {

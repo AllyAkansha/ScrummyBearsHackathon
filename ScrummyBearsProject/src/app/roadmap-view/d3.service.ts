@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 
 import { Task } from '../model/task';
 import { Event } from '../model/event';
+import { Lane } from '../model/lane';
 import { ChartStoreService } from '../service/chart-store.service';
 
 @Injectable({
@@ -12,7 +13,7 @@ import { ChartStoreService } from '../service/chart-store.service';
 export class D3Service {
 
   SVG_WIDTH = 1000;
-  margin = { top: 20, left: 20, right: 20, bottom: 0 };
+  margin = { top: 20, left: 60, right: 20, bottom: 0 };
 
   test: Task[];
   roadmap: any;
@@ -89,21 +90,38 @@ export class D3Service {
 
     const eventDates = this.chartStoreService.chart.events
       .map((value: Event) => value.time);
-      
+
+    const laneIds = this.chartStoreService.chart.lanes
+      .map((value: Lane) => value.id);
+      console.log(laneIds);
+
     const xScaleInt = d3.scaleLinear().domain([0, length]).range([0, 100]);
     const xScale = d3.scaleTime()
       .domain([earliest, latest])
       .range([0, 1000 - this.margin.right])
       .clamp(true);
 
+    const yScale = d3.scaleLinear()
+     .domain([ 0, this.chartStoreService.chart.events.length ])
+     .range([ 0, 54 * this.chartStoreService.chart.events.length ])
+
     const xAxis = d3.axisTop(xScale)
       .tickValues(eventDates)
       .tickFormat((d: any, i) => this.chartStoreService.eventsHash[d.toISOString()].name);
+
+    const yAxis = d3.axisLeft(yScale)
+      .tickValues(laneIds)
+      .tickFormat((d: any, i) => this.chartStoreService.lanesHash[d].name);
 
     this.roadmap
       .append('g')
       .attr('transform', `translate(${this.margin.left}, 20)`)
       .call(xAxis);
+
+    this.roadmap
+      .append('g')
+      .attr('transform', `translate(50, 50)`)
+      .call(yAxis);
     // const xAxis = d3.axisTop(x)
     // .tickFormat(d3.time.format(tickFormat))
     // .tickSubdivide(true)
@@ -126,6 +144,17 @@ export class D3Service {
       })
       .attr('height', 50)
       .attr('transform', `translate(${this.margin.left}, 30)`)
+      .attr('fill', () => {
+        const colors = [
+          '#F6DDDF',
+          '#EEC9C8',
+          '#DF9C9D',
+          '#687A80',
+          '#B9C6CA'
+        ];
+
+        return colors[parseInt(Math.random() * 10) % colors.length];
+      })
   }
 
   redraw(): void {
