@@ -19,8 +19,8 @@
 
       <mat-form-field>
         <mat-select [(ngModel)]="selectedLane" placeholder="Choose Lane">
-          <mat-option *ngFor="let lane of lanes" [value]="lane.laneID">
-            {{lane.laneName}}
+          <mat-option *ngFor="let lane of chartStoreService.chart.lanes" [value]="lane.id">
+            {{lane.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -28,13 +28,7 @@
   </div>
   <div>
     <br>
-    <button mat-button class="right" (click)="onClickMe()">Add Task!</button>
+    <button mat-button class="right" (click)="onClickMe()" routerLink="/roadmap-view">Add Task</button>
     <br>
-    <br> {{taskAdded}}
-    <br>
-     {{outputTask | json}}
   </div>
 </mat-card>
-
-
-<app-add-lane></app-add-lane>

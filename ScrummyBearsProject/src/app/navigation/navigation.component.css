@@ -14,5 +14,13 @@
 
 .mat-list-item {
   color: #650360;
-  font-weight: bolder;
+  font-weight: lighter;
+}
+
+.logo {
+  margin-bottom: -20%;
+}
+
+.active-link {
+  background-color: #EEEEEE;
 }
