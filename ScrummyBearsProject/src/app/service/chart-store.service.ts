@@ -17,29 +17,59 @@ export class ChartStoreService { // are you ready
   public chart: Chart;
   public taskSubject: Subject<any>;
   public laneSubject: Subject<any>;
+  public eventsHash: object;
+  public lanesHash: object;
 
   constructor() {
+    this.eventsHash = {};
+    this.lanesHash = {};
+
     this.taskSubject = new Subject();
     this.laneSubject = new Subject();
 
     this.chart = {
       metadata: {},
-      lanes: [],
+      lanes: [
+        { id: 0, name: "Lane 1" },
+        { id: 1, name: "Lane 2" },
+        { id: 2, name: "Lane 3" }
+      ],
       stages: [],
-      events: [],
+      events: [
+        {
+          'id': 0,
+          'name': 'Q1',
+          'time': moment('2018-01-01')
+        },
+        {
+          'id': 1,
+          'name': 'Q2',
+          'time': moment('2018-04-01')
+        },
+        {
+          'id': 2,
+          'name': 'Q3',
+          'time': moment('2018-07-01')
+        },
+        {
+          'id': 3,
+          'name': 'Q4',
+          'time': moment('2018-10-01')
+        }
+      ],
       tasks: [
         {
           'id': 0,
           'name': 'default',
-          'start': moment('2018-07-01'),
-          'end': moment('2018-07-20'),
+          'start': moment('2018-01-02'),
+          'end': moment('2018-03-20'),
           'lane': 0
         },
         {
           'id': 0,
           'name': 'default',
-          'start': moment('2018-07-05'),
-          'end': moment('2018-07-20'),
+          'start': moment('2018-04-05'),
+          'end': moment('2018-06-20'),
           'lane': 1
         },
         {
@@ -51,6 +81,14 @@ export class ChartStoreService { // are you ready
         }
       ]
     }
+
+    this.chart.events.forEach((event: Event) => {
+      this.eventsHash[event.time.toISOString()] = event;
+    });
+
+    this.chart.lanes.forEach((lane: Lane) => {
+      this.lanesHash[lane.id] = lane;
+    });
   }
 
   getChart(): Chart {

@@ -12,14 +12,12 @@ export class AddLaneComponent implements OnInit {
   laneName: string;
   newLaneName: string;
   
-  lanes: Lane[] = [
-    { id: 0, name: "Lane 1" },
-    { id: 1, name: "Lane 2" },
-    { id: 2, name: "Lane 3" }
-  ];
+  lanes: Lane[] = [  ];
   
 
-  constructor(private chartStoreService: ChartStoreService) { }
+  constructor(private chartStoreService: ChartStoreService) { 
+    this.lanes = this.chartStoreService.chart.lanes;
+  }
 
   ngOnInit() {
   }
