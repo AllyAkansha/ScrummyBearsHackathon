@@ -1,0 +1,18 @@
+<mat-card class="task-input-form-card flex-container">Add Lane to Gantt Chart
+
+    <div class="example-container">
+      
+      <mat-form-field>
+        <input matInput [(ngModel)]="newLaneName" placeholder="Add New Lane">
+      </mat-form-field>
+
+    </div>
+    <div>
+  
+      <button mat-button (click)="addLane()" >Add Lane!</button>
+      
+    </div>
+    <br>
+    <br>
+    <br> Entries in lanes array: {{lanes.length}}
+  </mat-card>

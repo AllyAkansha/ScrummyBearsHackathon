@@ -13,3 +13,32 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
   .example-container > * {
     width: 100%;
   }
+  
+.purple{
+  color: #650360;
+}
+.reversepurple{
+  background-color: #650360;
+  color: white;
+  border-color: white;
+  border-width: 10px;
+}
+  .mat-button{
+    background-color: #650360;
+    color: white;
+  }
+
+  /* noteccards for input fields */
+  .task-input-form-card {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .left{
+  }
+  
+  .right{
+    position: absolute;
+    right: 0;
+  }
