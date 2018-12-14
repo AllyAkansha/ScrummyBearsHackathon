@@ -1,18 +1,34 @@
-<mat-card class ="task-input-form-card flex-container">Add Task to Gantt Chart
+<mat-card class="task-input-form-card flex-container">Add Task to Gantt Chart
 
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Task Name">
-  </mat-form-field>
-  <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a start date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Choose an end date">
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-</div>
+  <div class="example-container">
+      <mat-form-field>
+        <input matInput [(ngModel)]="taskName" placeholder="Task Name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="startDate" [matDatepicker]="picker" placeholder="Choose a start date (mm/dd/yyyy)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="endDate" [matDatepicker]="picker2" placeholder="Choose an end date (mm/dd/yyyy)">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedLane" placeholder="Choose Lane">
+          <mat-option *ngFor="let lane of chartStoreService.chart.lanes" [value]="lane.id">
+            {{lane.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+  </div>
+  <div>
+    <br>
+    <button mat-button class="right" (click)="onClickMe()" routerLink="/roadmap-view">Add Task</button>
+    <br>
+  </div>
 </mat-card>
